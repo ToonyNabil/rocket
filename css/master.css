@@ -1,0 +1,180 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+:root {
+  --background: #5c5d70;
+  --pink-light: #ed787b;
+  --pink: #dd5a56;
+  --pink-dark: #731e29;
+  --purple: #9251ea;
+  --purple-dark: #5b23af;
+  --green: #ccd883;
+  --green-dark: #90af42;
+  --grey: #8b8b8b;
+  --grey-dark: #474747;
+  --light: #e6e6e6;
+  --shade: rgba(0, 0, 0, 0.2);
+  /* --base-height: .0567em;
+  --border-width: .005em; */
+}
+body {
+  background-color: var(--background);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+@media (max-width: 767px) {
+  .rocket {
+    transform: scale(0.6) translateX(50px);
+  }
+}
+.rocket .body {
+  width: 430px;
+  height: 30px;
+  background-color: var(--pink-light);
+  border: 2px solid var(--pink-dark);
+  box-shadow: inset -7px -7px 0 0px var(--pink);
+  border-radius: 20px;
+  position: relative;
+  animation: body 1s ease-in-out infinite alternate;
+}
+.rocket .body::before {
+  content: "";
+  position: absolute;
+  background-color: var(--pink-light);
+  border: 2px solid var(--pink-dark);
+  box-shadow: inset 7px -7px 0 0px var(--pink);
+  border-radius: 20px;
+  width: 120px;
+  height: 27px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right: none;
+  left: -103px;
+  top: -16px;
+  transform: rotate(13deg);
+}
+.rocket .body .grey-part {
+  position: absolute;
+  width: 115px;
+  height: 18px;
+  background: var(--grey);
+  top: 26px;
+  border-radius: 30px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border: 2px solid var(--grey-dark);
+}
+.rocket .body .grey-part.right {
+  right: 30px;
+  box-shadow: inset -5px -5px 0 0px var(--shade);
+}
+.rocket .body .grey-part.left {
+  left: 50px;
+  box-shadow: inset 5px -5px 0 0px var(--shade);
+}
+.purple-part {
+  position: absolute;
+  background-color: var(--purple);
+  border: 2px solid var(--purple-dark);
+  width: 50px;
+  height: 12px;
+  border-radius: 30px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  left: calc(50% - -10px);
+  transform: translateX(-50%);
+  top: 26px;
+  box-shadow: inset 0px -2px 0 var(--purple-dark);
+}
+.green-part {
+  position: absolute;
+  left: 50px;
+  width: 115px;
+  height: 10px;
+  background: var(--green);
+  top: -12px;
+  border: 2px solid var(--green-dark);
+  border-radius: 20px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-bottom: none;
+}
+.green-part::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: calc(50% - 5px);
+  transform: translate(-50%, -50%);
+  background-color: var(--pink-light);
+  height: 16px;
+  width: 35px;
+  border: 2px solid var(--pink);
+  border-bottom: 0;
+  border-top-left-radius: 16px 8px;
+  border-top-right-radius: 16px 8px;
+}
+.shadow {
+  background-color: var(--shade);
+  width: 400px;
+  height: 15px;
+  position: relative;
+  bottom: -50px;
+  border-radius: 50%;
+  left: 10px;
+  filter: blur(2px);
+  will-change: opacity, transform;
+  animation: shadow 1s ease-in-out alternate infinite;
+}
+.line {
+  position: absolute;
+  background: var(--light);
+  width: 50px;
+  height: 4px;
+  border-radius: 20px;
+  z-index: -1;
+  will-change: transform;
+  animation: line linear infinite both;
+}
+.line.first {
+  top: -90px;
+  box-shadow: 620px -125px var(--light), 450px 310px var(--light), -500px 100px var(--light);
+  animation-duration: 2s;
+}
+.line:last-child {
+  top: 90px;
+  box-shadow: 600px -225px var(--light), 100px 275px var(--light);
+  animation-duration: 1s;
+  animation-delay: -1.5s;
+  left: 250px;
+}
+/* Start animation */
+@keyframes shadow {
+  to {
+    opacity: 0.5;
+    transform: scaleX(0.7);
+  }
+}
+@keyframes body {
+  from {
+    transform: translateY(0) rotate(-0.5deg);
+  }
+  to {
+    transform: translatey(-30px) rotate(2deg);
+  }
+}
+@keyframes line {
+  from {
+    transform: translateX(1000px);
+  }
+  to {
+    transform: translateX(-1000px);
+  }
+}
+/* End animation */
