@@ -28,6 +28,9 @@ body {
   align-items: center;
   overflow: hidden;
 }
+.rocket {
+  height: 100vh;
+}
 @media (max-width: 767px) {
   .rocket {
     transform: scale(0.6) translateX(50px);
